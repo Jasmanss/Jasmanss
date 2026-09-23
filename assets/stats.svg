@@ -24,12 +24,12 @@
 <text x="590" y="130" class="mono" font-size="11" letter-spacing="1.6" fill="#EDEFEA" fill-opacity=".45">PUBLIC REPOS</text>
 <text x="590" y="148" class="mono" font-size="11" letter-spacing="1.6" fill="#EDEFEA" fill-opacity=".25">AND COUNTING</text>
 <text x="800" y="56" class="mono" font-size="11" letter-spacing="1.6" fill="#EDEFEA" fill-opacity=".45">LANGUAGES · PUBLIC REPOS</text>
-<rect class="seg" style="animation-delay:0.00s" x="800.0" y="70" width="135.3" height="10" rx="2" fill="#C8FF2E"/>
-<rect class="seg" style="animation-delay:0.15s" x="938.3" y="70" width="87.1" height="10" rx="2" fill="#A3D11F"/>
-<rect class="seg" style="animation-delay:0.30s" x="1028.4" y="70" width="75.4" height="10" rx="2" fill="#7A9E17"/>
-<rect class="seg" style="animation-delay:0.45s" x="1106.8" y="70" width="20.6" height="10" rx="2" fill="#556F12"/>
-<rect class="seg" style="animation-delay:0.60s" x="1130.4" y="70" width="12.1" height="10" rx="2" fill="#3A4B10"/>
-<rect class="seg" style="animation-delay:0.75s" x="1145.5" y="70" width="3.5" height="10" rx="2" fill="#24272A"/>
+<rect class="seg" style="animation-delay:0.00s" x="800.0" y="70" width="134.3" height="10" rx="2" fill="#C8FF2E"/>
+<rect class="seg" style="animation-delay:0.15s" x="937.3" y="70" width="88.9" height="10" rx="2" fill="#A3D11F"/>
+<rect class="seg" style="animation-delay:0.30s" x="1029.2" y="70" width="74.9" height="10" rx="2" fill="#7A9E17"/>
+<rect class="seg" style="animation-delay:0.45s" x="1107.2" y="70" width="20.4" height="10" rx="2" fill="#556F12"/>
+<rect class="seg" style="animation-delay:0.60s" x="1130.6" y="70" width="12.0" height="10" rx="2" fill="#3A4B10"/>
+<rect class="seg" style="animation-delay:0.75s" x="1145.6" y="70" width="3.4" height="10" rx="2" fill="#24272A"/>
 <rect x="800" y="99" width="9" height="9" rx="1" fill="#C8FF2E"/>
 <text x="818" y="108" class="mono" font-size="12" fill="#EDEFEA" fill-opacity=".8">Swift</text>
 <text x="960" y="108" text-anchor="end" class="mono" font-size="12" fill="#EDEFEA" fill-opacity=".45">39%</text>
@@ -100,8 +100,8 @@
 <rect class="bar" style="animation-delay:0.564s" x="1028.0" y="291.4" width="17.8" height="76.6" rx="1.5" fill="#C8FF2E" fill-opacity="0.70"/>
 <rect class="bar" style="animation-delay:0.576s" x="1048.8" y="302.6" width="17.8" height="65.4" rx="1.5" fill="#C8FF2E" fill-opacity="0.65"/>
 <rect class="bar" style="animation-delay:0.588s" x="1069.7" y="226.0" width="17.8" height="142.0" rx="1.5" fill="#C8FF2E" fill-opacity="1.00"/>
-<rect class="bar" style="animation-delay:0.600s" x="1090.5" y="283.9" width="17.8" height="84.1" rx="1.5" fill="#C8FF2E" fill-opacity="0.73"/>
-<rect class="bar" style="animation-delay:0.612s" x="1111.3" y="250.3" width="17.8" height="117.7" rx="1.5" fill="#C8FF2E" fill-opacity="0.89"/>
+<rect class="bar" style="animation-delay:0.600s" x="1090.5" y="285.8" width="17.8" height="82.2" rx="1.5" fill="#C8FF2E" fill-opacity="0.73"/>
+<rect class="bar" style="animation-delay:0.612s" x="1111.3" y="248.4" width="17.8" height="119.6" rx="1.5" fill="#C8FF2E" fill-opacity="0.90"/>
 <rect class="bar" style="animation-delay:0.624s" x="1132.2" y="351.2" width="17.8" height="16.8" rx="1.5" fill="#C8FF2E" fill-opacity="0.43"/>
 <text x="1152" y="204" text-anchor="end" class="mono" font-size="11" letter-spacing="1.6" fill="#EDEFEA" fill-opacity=".45">PEAK 76/WK · <tspan fill="#C8FF2E" fill-opacity="1">UPDATED 2026-09-23</tspan></text>
 <text x="89.7" y="390" class="mono" font-size="10" letter-spacing="1" fill="#EDEFEA" fill-opacity=".35">OCT</text>
