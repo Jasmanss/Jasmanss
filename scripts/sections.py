@@ -5,8 +5,8 @@ from brand import ROOT, BONE, INK, GILT, GILT_DEEP, ASH, font_css
 
 # (file key, number, plain words, accent word, note on the right)
 SECTIONS = [
-    ("work", "01", "Selected", "work", "SIX PROJECTS"),
-    ("experience", "02", "Where I've", "worked", "2025 — NOW"),
+    ("experience", "01", "Where I've", "worked", "2026 — NOW"),
+    ("work", "02", "Selected", "work", "SIX PROJECTS"),
     ("stack", "03", "The", "stack", "WHAT I REACH FOR"),
     ("activity", "04", "Recent", "activity", "REFRESHED DAILY"),
 ]

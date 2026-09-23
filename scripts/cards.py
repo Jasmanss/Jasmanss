@@ -59,8 +59,9 @@ def window(url, body, style):
             f'<span class="m">{url}</span></div>{body}</div>')
 
 
-def shot(file, cover=False):
-    return f'<img class="shot{" cover" if cover else ""}" src="{(SHOTS / file).as_uri()}">'
+def shot(file, cover=False, focus="left top"):
+    style = f' style="object-position:{focus}"' if cover else ""
+    return f'<img class="shot{" cover" if cover else ""}"{style} src="{(SHOTS / file).as_uri()}">'
 
 
 IMPERIUM_UI = f"""
@@ -89,29 +90,30 @@ HAIRSTYL_UI = f"""
 </div>"""
 
 FEATURED = [
-    dict(key="imperium", num="01", title="Imperium", tagline="Text your Mac. It does the thing.",
-         body="A FastAPI agent on the Mac turns plain English into AppleScript with Claude. "
-              "Every command clears token-paired auth, a tiered permission model, a script policy gate, "
-              "and lands in an audit log.",
+    dict(key="portlkit", num="01", title="Portlkit", tagline="Get paid by the client you already have.",
+         body="White-label client portals for freelancers and small studios. Invoices, milestones, files, "
+              "and messages live behind one shareable link, so clients never make an account. Postgres "
+              "row-level security and unguessable share tokens keep each client's data private.",
+         stack=["Next.js", "Supabase", "Postgres", "Vercel"],
+         facts=[("1 link", "per client, no client accounts"), ("Auto", "overdue-invoice reminders")],
+         url="portlkit.com", visual=shot("portlkit.jpg", cover=True, focus="center"), side="left"),
+    dict(key="imperium", num="02", title="Imperium", tagline="Text your Mac. It does the thing.",
+         body="A FastAPI agent on the Mac turns plain English into actions with Claude: open apps, send "
+              "email, run Git, all from your phone. Pairing tokens, permission controls, and confirmation "
+              "gates block destructive commands.",
          stack=["Python", "FastAPI", "Claude API", "Next.js"],
-         facts=[("4", "security layers per command"), ("v2", "hardened rebuild of the hackathon demo")],
+         facts=[("Evals", "in CI fail the build if safety weakens"), ("4", "gates on every command")],
          url="imperium · local agent", visual=IMPERIUM_UI, side="right"),
-    dict(key="callback", num="02", title="Callback", tagline="You applied. Then, silence.",
-         body="A job application tracker that follows up. Board and table views, email import, "
-              "and reminders, and anything that goes quiet for four months moves to Ghosted on its own. "
-              "No account; your data stays in your browser.",
-         stack=["TypeScript", "React", "Vite"],
-         facts=[("0", "servers or accounts"), ("4 mo", "until auto-ghosted")],
-         url="jasmanss.github.io/callback", visual=shot("callback.jpg", cover=True), side="left"),
 ]
 
 COMPACT = [
-    dict(key="portlkit", title="Portlkit", tagline="Get paid by the client you already have.",
-         stack=["Next.js", "Supabase", "Stripe"], badge="In development", url="portlkit", visual=shot("portl.jpg")),
+    dict(key="hairstyl", title="HairStyl", tagline="A selfie in, a grooming routine out.",
+         stack=["Swift", "SwiftUI", "OpenAI", "Supabase"], badge="150+ users", url="ios · testflight", visual=HAIRSTYL_UI),
+    dict(key="callback", title="Callback", tagline="You applied. Then, silence.",
+         stack=["React", "TypeScript", "AWS"], badge="Live", url="jasmanss.github.io/callback",
+         visual=shot("callback.jpg")),
     dict(key="haven", title="Haven", tagline="A household's money, in one calm place.",
          stack=["Next.js", "Supabase", "Plaid"], badge="Live", url="haven-money.vercel.app", visual=shot("haven.jpg")),
-    dict(key="hairstyl", title="Hairstyl", tagline="A selfie in, a grooming routine out.",
-         stack=["Swift", "SwiftUI", "OpenAI"], badge="150+ users", url="ios app", visual=HAIRSTYL_UI),
     dict(key="aroma", title="Aroma AI", tagline="A photo in, your next fragrance out.",
          stack=["Python", "OpenCV", "JavaScript"], badge="Best UI/UX · GrizzHacks 7", url="jasmanss.github.io/aromaai",
          visual=shot("aroma.jpg")),
@@ -162,42 +164,60 @@ def compact(p):
 
 
 def experience():
-    W, H = 1200, 760
-    metrics = [("150+", "active users in four months"), ("−30%", "onboarding drop-off"),
-               ("~2s", "per AI analysis"), ("80%+", "analysis accuracy")]
-    tiles = "".join(
-        f'<div style="border:1px solid {LINE};border-radius:16px;padding:26px 24px;background:rgba(26,20,15,.6)">'
-        f'<div class="d gilt" style="font-size:54px;line-height:1">{v}</div>'
-        f'<div class="m ash" style="font-size:10px;margin-top:14px;line-height:1.7">{k}</div></div>'
-        for v, k in metrics)
-    entry = lambda when, title, where, note: f"""
-      <div style="display:grid;grid-template-columns:220px 1fr;gap:32px;padding:30px 0;border-top:1px solid {LINE}">
-        <div class="m ash" style="font-size:11px;padding-top:8px;line-height:1.8">{when}</div>
-        <div><div class="d" style="font-size:30px">{title} <span class="a" style="font-size:26px">{where}</span></div>
-        <div class="ash" style="font-size:16px;margin-top:8px;line-height:1.6">{note}</div></div>
-      </div>"""
+    W, H = 1200, 950
+
+    def tiles(items):
+        return "".join(
+            f'<div style="border:1px solid {LINE};border-radius:14px;padding:20px 22px;background:rgba(26,20,15,.6)">'
+            f'<div class="d gilt" style="font-size:44px;line-height:1">{v}</div>'
+            f'<div class="m ash" style="font-size:10px;margin-top:12px;line-height:1.7">{k}</div></div>'
+            for v, k in items)
+
+    def chips(items):
+        return "".join(f'<span class="chip m" style="font-size:10px;padding:7px 13px">{c}</span>' for c in items)
+
+    def role(when, where, current, title, org, body, facts, stack, first=False):
+        dot = (f'<div style="display:flex;align-items:center;gap:10px;margin-top:18px">'
+               f'<span style="width:8px;height:8px;border-radius:50%;background:{GILT};box-shadow:0 0 0 6px rgba(214,165,74,.15)"></span>'
+               f'<span class="m ash" style="font-size:10px">Current</span></div>') if current else ""
+        border = "" if first else f"border-top:1px solid {LINE};"
+        grid = (f'<div style="display:grid;grid-template-columns:repeat({len(facts)},1fr);gap:12px;margin-top:22px">'
+                f'{tiles(facts)}</div>') if facts else ""
+        return f"""
+  <div style="display:grid;grid-template-columns:200px 1fr;gap:36px;padding:34px 0;{border}">
+    <div><div class="m gilt" style="font-size:11px;line-height:1.8">{when}</div>
+      <div class="m ash" style="font-size:10px;margin-top:8px;line-height:1.8">{where}</div>{dot}</div>
+    <div>
+      <div class="d" style="font-size:38px;line-height:1.1">{title}</div>
+      <div class="a" style="font-size:24px;margin-top:6px">{org}</div>
+      <p class="ash" style="font-size:17px;line-height:1.6;margin-top:14px;max-width:820px">{body}</p>
+      {grid}
+      <div class="chips" style="margin-top:20px">{chips(stack)}</div>
+    </div>
+  </div>"""
+
     html = f"""
-<div class="card" style="width:{W}px;height:{H}px;padding:60px 64px">
-  <div style="display:grid;grid-template-columns:220px 1fr;gap:32px">
+<div class="card" style="width:{W}px;height:{H}px;padding:26px 64px">
+  {role("May 2026 —<br>Present", "Sterling Heights, MI", True,
+        "Software Engineering Intern", "Motherson Group",
+        "Replaced paper maintenance checklists with a web app technicians use from their phones via QR codes. "
+        "Built MTTR, MTBF, and compliance dashboards for supervisors, automated Teams alerts with Power Automate, "
+        "and deployed it on-prem on Ubuntu with Gunicorn, systemd, HTTPS, and automated backups.",
+        [("147", "machines off paper checklists"), ("400+", "pytest tests on production flows"), ("QR", "maintenance from a phone")],
+        ["Python", "Flask", "SQL", "JavaScript", "Power Automate", "Ubuntu"], first=True)}
+  {role("June 2026 —<br>Present", "Remote · Part-time", True,
+        "Frontend Developer", "Aurelius Holdings LLC",
+        "Building the customer-facing frontend of a live ecommerce site: reusable components and routed pages, "
+        "cart state, pricing rules, and form validation, wired to Supabase for products, orders, and auth. "
+        "Ship weekly through Vercel and fix customer-reported bugs in production.",
+        [], ["React", "TypeScript", "Vite", "Supabase", "Vercel"])}
+  <div style="display:grid;grid-template-columns:200px 1fr;gap:36px;padding:30px 0 0;border-top:1px solid {LINE}">
+    <div><div class="m gilt" style="font-size:11px;line-height:1.8">Expected<br>May 2027</div>
+      <div class="m ash" style="font-size:10px;margin-top:8px;line-height:1.8">Rochester Hills, MI</div></div>
     <div>
-      <div class="m gilt" style="font-size:11px;line-height:1.8">May 2025 —<br>Present</div>
-      <div style="display:flex;align-items:center;gap:10px;margin-top:22px">
-        <span style="width:8px;height:8px;border-radius:50%;background:{GILT};box-shadow:0 0 0 6px rgba(214,165,74,.15)"></span>
-        <span class="m ash" style="font-size:10px">Current</span></div>
+      <div class="d" style="font-size:30px;line-height:1.15">B.S. Computer Science, <span class="a" style="font-size:26px">Oakland University</span></div>
+      <div class="ash" style="font-size:16px;margin-top:8px;line-height:1.6">Concentration in Artificial Intelligence. Coursework in data structures &amp; algorithms, software engineering, databases, operating systems, and networks.</div>
     </div>
-    <div>
-      <div class="d" style="font-size:46px;line-height:1.1">Frontend Developer &amp; Co-Founder</div>
-      <div class="a" style="font-size:28px;margin-top:8px">Vengeance Intelligence LLC</div>
-      <p class="ash" style="font-size:18px;line-height:1.6;margin-top:18px;max-width:780px">
-        Co-founded the company and led frontend and product for Hairstyl, an iOS grooming app.
-        I built it in Swift and SwiftUI from photo capture through AI analysis to routines, and
-        reworked the onboarding, capture, results, and tracking flows as it grew.</p>
-      <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:30px">{tiles}</div>
-    </div>
-  </div>
-  <div style="margin-top:36px">
-    {entry("Hackathon", "Best UI/UX,", "GrizzHacks 7", "Won with Aroma AI, a fragrance recommender that matches scents from a photo or a short quiz.")}
-    {entry("Education", "Computer Science,", "Oakland University", "Studying CS in Rochester, Michigan, and shipping side projects along the way.")}
   </div>
 </div>"""
     render("experience", html, W, H)

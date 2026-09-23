@@ -1,11 +1,11 @@
 """Render assets/header.svg. Run: python3 scripts/header.py"""
 from brand import ROOT, INK, LINE, BONE, ASH, GILT, font_css
 
-EYEBROW = "COMPUTER SCIENCE · OAKLAND UNIVERSITY"
+EYEBROW = "CS + AI · OAKLAND UNIVERSITY · CLASS OF 2027"
 FIRST, LAST = "Jasman", "Sidhu"
 TAGLINE = "I build practical AI products: agents that take real actions,"
 TAGLINE2 = "and apps people actually use."
-META = ["AGENTS / WEB / iOS", "STERLING HEIGHTS, MI"]
+META = ["SOFTWARE ENGINEERING INTERN · MOTHERSON", "STERLING HEIGHTS, MI"]
 
 css = font_css(
     display=FIRST,

@@ -14,32 +14,35 @@ TILE = PANEL
 # (icon file, label, brand colour; None means the brand is black, so light up in gilt)
 GROUPS = [
     ("Languages", [
+        ("python", "Python", "#3776AB"),
         ("typescript", "TypeScript", "#3178C6"),
         ("javascript", "JavaScript", "#F7DF1E"),
-        ("python", "Python", "#3776AB"),
+        ("openjdk", "Java", "#ED8B00"),
         ("swift", "Swift", "#F05138"),
     ]),
     ("Frameworks", [
         ("react", "React", "#61DAFB"),
         ("nextdotjs", "Next.js", None),
         ("nodedotjs", "Node.js", "#5FA04E"),
+        ("flask", "Flask", None),
         ("fastapi", "FastAPI", "#009688"),
         ("tailwindcss", "Tailwind", "#06B6D4"),
     ]),
     ("Data & Infra", [
-        ("supabase", "Supabase", "#3FCF8E"),
         ("postgresql", "Postgres", "#4169E1"),
-        ("mongodb", "MongoDB", "#47A248"),
+        ("supabase", "Supabase", "#3FCF8E"),
+        ("amazondynamodb", "DynamoDB", "#4053D6"),
+        ("awslambda", "Lambda", "#FF9900"),
+        ("ubuntu", "Ubuntu", "#E95420"),
         ("vercel", "Vercel", None),
-        ("stripe", "Stripe", "#635BFF"),
-        ("githubactions", "Actions", "#2088FF"),
     ]),
-    ("AI & Tools", [
+    ("Testing & AI", [
+        ("pytest", "pytest", "#0A9EDC"),
+        ("vitest", "Vitest", "#6E9F18"),
+        ("githubactions", "Actions", "#2088FF"),
         ("claude", "Claude", "#D97757"),
         ("openai", "OpenAI", None),
-        ("opencv", "OpenCV", "#5C3EE8"),
-        ("git", "Git", "#F05032"),
-        ("figma", "Figma", "#F24E1E"),
+        ("ollama", "Ollama", None),
     ]),
 ]
 
