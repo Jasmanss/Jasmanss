@@ -6,13 +6,10 @@ import json
 import os
 import urllib.request
 from datetime import date, timedelta
-from pathlib import Path
 
-ROOT = Path(__file__).resolve().parent.parent
+from brand import ROOT, INK, LINE, BONE, ASH, GILT, GILT_RAMP as RAMP, font_css
+
 USER = os.environ.get("PROFILE_USER", "Jasmanss")
-
-INK, BONE, LIME, LINE, TILE = "#0A0B0C", "#EDEFEA", "#C8FF2E", "#24272A", "#111315"
-RAMP = ["#C8FF2E", "#A3D11F", "#7A9E17", "#556F12", "#3A4B10"]
 
 QUERY = """
 query($login: String!) {
@@ -82,6 +79,13 @@ def languages(repos, top=5):
     return shown
 
 
+# Numbers and language names change daily, so embed full character sets rather than today's text.
+CSS = font_css(
+    display="0123456789,",
+    mono="ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789·/%&,.-+#★ ",
+)
+
+
 def render(user):
     cal = user["contributionsCollection"]["contributionCalendar"]
     days = [d for w in cal["weeks"] for d in w["contributionDays"]]
@@ -94,8 +98,9 @@ def render(user):
     W, H = 1200, 420
     o = [f'''<svg xmlns="http://www.w3.org/2000/svg" width="{W}" height="{H}" viewBox="0 0 {W} {H}">
 <style>
-  .mono {{ font-family: ui-monospace, "SF Mono", SFMono-Regular, Menlo, Consolas, monospace; }}
-  .sans {{ font-family: system-ui, -apple-system, "Helvetica Neue", Arial, sans-serif; }}
+  {CSS}
+  .mono {{ font-family: 'Martian Mono', ui-monospace, monospace; }}
+  .sans {{ font-family: 'Fraunces Display', Georgia, serif; }}
   .bar {{ transform-box: fill-box; transform-origin: bottom; animation: rise .9s cubic-bezier(.2,.7,.2,1) both; }}
   @keyframes rise {{ from {{ transform: scaleY(0); }} }}
   .seg {{ transform-box: fill-box; transform-origin: left; animation: grow 1.1s cubic-bezier(.2,.7,.2,1) both; }}
@@ -115,13 +120,13 @@ def render(user):
     ]
     for k, (value, label, sub) in enumerate(metrics):
         x = 48 + k * 180
-        o.append(f'<text x="{x}" y="100" class="sans" font-size="54" font-weight="800" letter-spacing="-1.5" fill="{LIME if k == 0 else BONE}">{value}</text>')
-        o.append(f'<text x="{x + 2}" y="130" class="mono" font-size="11" letter-spacing="1.6" fill="{BONE}" fill-opacity=".45">{label.upper()}</text>')
+        o.append(f'<text x="{x}" y="100" class="sans" font-size="64" letter-spacing="-1.5" fill="{GILT if k == 0 else BONE}">{value}</text>')
+        o.append(f'<text x="{x + 2}" y="130" class="mono" font-size="11" letter-spacing="1.6" fill="{ASH}">{label.upper()}</text>')
         o.append(f'<text x="{x + 2}" y="148" class="mono" font-size="11" letter-spacing="1.6" fill="{BONE}" fill-opacity=".25">{sub.upper()}</text>')
 
     # Languages, right column.
     lx, lw = 800, 352
-    o.append(f'<text x="{lx}" y="56" class="mono" font-size="11" letter-spacing="1.6" fill="{BONE}" fill-opacity=".45">LANGUAGES · PUBLIC REPOS</text>')
+    o.append(f'<text x="{lx}" y="56" class="mono" font-size="11" letter-spacing="1.6" fill="{ASH}">LANGUAGES · PUBLIC REPOS</text>')
     x = lx
     for k, (name, p) in enumerate(langs):
         w = max(lw * p - 3, 2)
@@ -134,12 +139,12 @@ def render(user):
         color = LINE if name == "Other" else RAMP[k % len(RAMP)]
         o.append(f'<rect x="{tx}" y="{ty - 9}" width="9" height="9" rx="1" fill="{color}"/>')
         o.append(f'<text x="{tx + 18}" y="{ty}" class="mono" font-size="12" fill="{BONE}" fill-opacity=".8">{name}</text>')
-        o.append(f'<text x="{tx + 160}" y="{ty}" text-anchor="end" class="mono" font-size="12" fill="{BONE}" fill-opacity=".45">{p * 100:.0f}%</text>')
+        o.append(f'<text x="{tx + 160}" y="{ty}" text-anchor="end" class="mono" font-size="12" fill="{ASH}">{p * 100:.0f}%</text>')
 
     # Weekly contributions.
     top, base = 206, 368
     o.append(f'<line x1="48" y1="{top - 26}" x2="{W - 48}" y2="{top - 26}" stroke="{LINE}"/>')
-    o.append(f'<text x="48" y="{top - 2}" class="mono" font-size="11" letter-spacing="1.6" fill="{BONE}" fill-opacity=".45">COMMITS, PRS &amp; REVIEWS PER WEEK</text>')
+    o.append(f'<text x="48" y="{top - 2}" class="mono" font-size="11" letter-spacing="1.6" fill="{ASH}">COMMITS, PRS &amp; REVIEWS PER WEEK</text>')
     peak = max(weeks) or 1
     n = len(weeks)
     span = W - 96
@@ -147,10 +152,10 @@ def render(user):
     chart_h = base - top - 20
     for k, v in enumerate(weeks):
         h = max(chart_h * v / peak, 2 if v else 1)
-        fill = LIME if v else LINE
+        fill = GILT if v else LINE
         op = 0.35 + 0.65 * (v / peak) if v else 1
         o.append(f'<rect class="bar" style="animation-delay:{k * 0.012:.3f}s" x="{48 + k * bw + 1:.1f}" y="{base - h:.1f}" width="{bw - 3:.1f}" height="{h:.1f}" rx="1.5" fill="{fill}" fill-opacity="{op:.2f}"/>')
-    o.append(f'<text x="{W - 48}" y="{top - 2}" text-anchor="end" class="mono" font-size="11" letter-spacing="1.6" fill="{BONE}" fill-opacity=".45">PEAK {peak}/WK · <tspan fill="{LIME}" fill-opacity="1">UPDATED {date.today().isoformat()}</tspan></text>')
+    o.append(f'<text x="{W - 48}" y="{top - 2}" text-anchor="end" class="mono" font-size="11" letter-spacing="1.6" fill="{ASH}">PEAK {peak}/WK · <tspan fill="{GILT}" fill-opacity="1">UPDATED {date.today().isoformat()}</tspan></text>')
 
     # Month ticks under the chart.
     seen = set()

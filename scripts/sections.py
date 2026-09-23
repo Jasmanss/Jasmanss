@@ -1,37 +1,45 @@
-"""Render the section headings in assets/sections/. Run: python3 scripts/sections.py"""
-from pathlib import Path
+"""Render the section headings in assets/sections/, one per GitHub theme.
+Run: python3 scripts/sections.py
+"""
+from brand import ROOT, BONE, INK, GILT, GILT_DEEP, ASH, font_css
 
-ROOT = Path(__file__).resolve().parent.parent
-INK, BONE, LIME, LINE = "#0A0B0C", "#EDEFEA", "#C8FF2E", "#2A2D30"
-
+# (file key, number, plain words, accent word, note on the right)
 SECTIONS = [
-    ("work", "01", "Selected work", "SIX PROJECTS, ALL SHIPPED OR SHIPPING"),
-    ("experience", "02", "Experience", "2025 — NOW"),
-    ("stack", "03", "Stack", "WHAT I REACH FOR"),
-    ("activity", "04", "Activity", "LIVE · REFRESHED DAILY"),
+    ("work", "01", "Selected", "work", "SIX PROJECTS"),
+    ("experience", "02", "Where I've", "worked", "2025 — NOW"),
+    ("stack", "03", "The", "stack", "WHAT I REACH FOR"),
+    ("activity", "04", "Recent", "activity", "REFRESHED DAILY"),
 ]
+THEMES = {
+    "dark": dict(fg=BONE, accent=GILT, muted=ASH, rule="#3A3026"),
+    "light": dict(fg=INK, accent=GILT_DEEP, muted="#7A6E5E", rule="#E2D9CB"),
+}
 
-W, H = 1200, 84
+css = font_css(
+    display="".join(s[2] for s in SECTIONS),
+    accent="".join(s[3] for s in SECTIONS),
+    mono="".join(s[1] + s[4] for s in SECTIONS) + "/",
+)
+
+W, H = 1200, 100
 out_dir = ROOT / "assets" / "sections"
 out_dir.mkdir(parents=True, exist_ok=True)
 
-for (key, num, title, note), (theme, fg, muted, rule) in (
-    (s, t) for s in SECTIONS for t in (("dark", BONE, "#8B9096", LINE), ("light", "#0A0B0C", "#6A6F75", "#D0D4D8"))
-):
-    title_w = len(title) * 21.5  # close enough for a bold 36px system sans
-    rule_x = 112 + title_w + 28
-    svg = f'''<svg xmlns="http://www.w3.org/2000/svg" width="{W}" height="{H}" viewBox="0 0 {W} {H}">
+for key, num, words, accent, note in SECTIONS:
+    for theme, c in THEMES.items():
+        svg = f'''<svg xmlns="http://www.w3.org/2000/svg" width="{W}" height="{H}" viewBox="0 0 {W} {H}">
 <style>
-  .mono {{ font-family: ui-monospace, "SF Mono", SFMono-Regular, Menlo, Consolas, monospace; }}
-  .sans {{ font-family: system-ui, -apple-system, "Helvetica Neue", Arial, sans-serif; }}
-  .rule {{ transform-origin: {rule_x}px 0; animation: draw 1.2s cubic-bezier(.2,.7,.2,1) both .2s; }}
-  @keyframes draw {{ from {{ transform: scaleX(0); }} }}
+{css}
+.d {{ font-family: 'Fraunces Display', Georgia, serif; }}
+.a {{ font-family: 'Fraunces Accent', Georgia, serif; font-style: italic; }}
+.m {{ font-family: 'Martian Mono', ui-monospace, monospace; }}
+.rule {{ transform-origin: 0 0; animation: draw 1.4s cubic-bezier(.2,.7,.2,1) both .15s; }}
+@keyframes draw {{ from {{ transform: scaleX(0); }} }}
 </style>
-<rect x="0" y="22" width="84" height="42" fill="{LIME}"/>
-<text x="42" y="50" text-anchor="middle" class="mono" font-size="17" letter-spacing="2" fill="{INK}">{num}</text>
-<text x="112" y="56" class="sans" font-size="36" font-weight="800" letter-spacing="-.8" fill="{fg}">{title.upper()}</text>
-<line class="rule" x1="{rule_x:.0f}" y1="43.5" x2="{W - len(note) * 9.3 - 28:.0f}" y2="43.5" stroke="{rule}" stroke-width="1"/>
-<text x="{W}" y="48" text-anchor="end" class="mono" font-size="12" letter-spacing="2" fill="{muted}">{note}</text>
+<text x="2" y="30" class="m" font-size="13" letter-spacing="2.6" fill="{c['accent']}">{num} /</text>
+<text x="0" y="78" font-size="50" letter-spacing="-1" fill="{c['fg']}"><tspan class="d">{words} </tspan><tspan class="a" fill="{c['accent']}">{accent}</tspan></text>
+<text x="{W - 4}" y="76" text-anchor="end" class="m" font-size="12" letter-spacing="2.4" fill="{c['muted']}">{note}</text>
+<line class="rule" x1="0" y1="{H - 0.5}" x2="{W}" y2="{H - 0.5}" stroke="{c['rule']}"/>
 </svg>'''
-    (out_dir / f"{key}-{theme}.svg").write_text(svg)
-print("wrote", len(SECTIONS) * 2, "section headings")
+        (out_dir / f"{key}-{theme}.svg").write_text(svg)
+print("wrote", len(SECTIONS) * len(THEMES), "section headings")
