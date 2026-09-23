@@ -1,97 +1,86 @@
-<p align="center">
-  <img src="./assets/header.svg" alt="Jasman Sidhu — CS @ Oakland University, building practical AI products" width="100%" />
-</p>
+<img src="./assets/header.svg" alt="Jasman Sidhu — CS at Oakland University, building practical AI products" width="100%" />
 
-<p align="center">
-  <a href="https://jasmanss.com"><img src="https://img.shields.io/badge/jasmanss.com-0d1020?style=for-the-badge&logo=googlechrome&logoColor=a78bfa" alt="Website" /></a>
-  <a href="https://linkedin.com/in/jasmanss"><img src="https://img.shields.io/badge/LinkedIn-0d1020?style=for-the-badge&logo=linkedin&logoColor=7dd3fc" alt="LinkedIn" /></a>
-  <a href="mailto:jasman047@icloud.com"><img src="https://img.shields.io/badge/Email-0d1020?style=for-the-badge&logo=maildotru&logoColor=f472b6" alt="Email" /></a>
-  <img src="https://komarev.com/ghpvc/?username=Jasmanss&style=for-the-badge&color=a78bfa&label=PROFILE+VIEWS" alt="Profile views" />
-</p>
+I'm a computer science student at Oakland University who builds software people can actually use: AI agents that take real actions, full-stack web apps, and iOS. Most of my projects start the same way: messy human input goes in, and something structured and useful comes out.
 
-<p align="center">
-  <a href="https://git.io/typing-svg"><img src="https://readme-typing-svg.demolab.com?font=JetBrains+Mono&weight=600&size=20&duration=2800&pause=900&color=A78BFA&center=true&vCenter=true&width=620&lines=I+build+AI+agents+that+actually+do+things;Text+my+Mac+%E2%86%92+it+runs+the+command;Next.js+%C2%B7+Python+%C2%B7+Swift+%C2%B7+Supabase;Currently+shipping%3A+Portlkit" alt="Typing SVG" /></a>
-</p>
+Currently building **Portlkit**, client portals that help freelancers get paid.
 
----
+[jasmanss.com](https://jasmanss.com) &nbsp;·&nbsp; [LinkedIn](https://www.linkedin.com/in/jasmanss/) &nbsp;·&nbsp; [jasmansidhu974@gmail.com](mailto:jasmansidhu974@gmail.com)
 
-### `~/about`
+<br />
 
-```ts
-const jasman = {
-  studying:   "Computer Science @ Oakland University",
-  basedIn:    "Sterling Heights, Michigan",
-  building:   ["AI agents", "full-stack web apps", "iOS"],
-  shipping:   "Portlkit — client portals that get freelancers paid",
-  philosophy: "If it isn't live, it isn't done.",
-};
-```
-
-### `~/projects`
+## Selected work
 
 <table>
   <tr>
     <td width="50%" valign="top">
-      <h3>⚡ <a href="https://github.com/Jasmanss/Imperium">Imperium</a></h3>
-      <p>Text your Mac from your phone and it does the thing. A FastAPI agent turns plain English into AppleScript with Claude, behind token-paired auth, a tiered permission model, a script policy gate, and an audit log.</p>
-      <img src="https://img.shields.io/badge/Python-3776AB?style=flat-square&logo=python&logoColor=white" />
-      <img src="https://img.shields.io/badge/FastAPI-009688?style=flat-square&logo=fastapi&logoColor=white" />
-      <img src="https://img.shields.io/badge/Claude-D97757?style=flat-square&logo=anthropic&logoColor=white" />
-      <br/><sub>🎥 <a href="https://youtu.be/jEpbP-iGQTk">Watch the hackathon demo</a></sub>
+      <a href="https://github.com/Jasmanss/Imperium"><img src="./assets/projects/imperium.jpg" alt="Imperium" width="100%" /></a>
+      <h3>Imperium</h3>
+      <p>Text your Mac from your phone and it does the task. A FastAPI agent turns plain English into AppleScript with Claude. Every command passes through token-paired auth, a tiered permission model, a script policy gate, and an audit log.</p>
+      <p><a href="https://github.com/Jasmanss/Imperium">Code</a> &nbsp;·&nbsp; <a href="https://youtu.be/jEpbP-iGQTk">Demo video</a></p>
     </td>
     <td width="50%" valign="top">
-      <h3>📬 <a href="https://github.com/Jasmanss/callback">Callback</a></h3>
-      <p>The job application tracker that follows up. Board and table views, email import, follow-up reminders, and applications that go silent get moved to Ghosted automatically.</p>
-      <img src="https://img.shields.io/badge/TypeScript-3178C6?style=flat-square&logo=typescript&logoColor=white" />
-      <img src="https://img.shields.io/badge/React-20232A?style=flat-square&logo=react&logoColor=61DAFB" />
-      <br/><sub>🔗 <a href="https://jasmanss.github.io/callback/">Live demo</a></sub>
+      <a href="https://jasmanss.github.io/callback/"><img src="./assets/projects/callback.jpg" alt="Callback" width="100%" /></a>
+      <h3>Callback</h3>
+      <p>A job application tracker that follows up. Board and table views, email import, and follow-up reminders. Applications that go silent for four months move to Ghosted on their own. No account needed; data stays in the browser.</p>
+      <p><a href="https://jasmanss.github.io/callback/">Live</a> &nbsp;·&nbsp; <a href="https://github.com/Jasmanss/callback">Code</a></p>
     </td>
   </tr>
   <tr>
     <td width="50%" valign="top">
-      <h3>💸 Haven</h3>
-      <p>A private finance dashboard for a household. Plaid pulls in bank, card, and brokerage accounts; Supabase stores it; one screen shows net worth, spending, and holdings.</p>
-      <img src="https://img.shields.io/badge/Next.js-000000?style=flat-square&logo=nextdotjs&logoColor=white" />
-      <img src="https://img.shields.io/badge/Supabase-3FCF8E?style=flat-square&logo=supabase&logoColor=white" />
-      <img src="https://img.shields.io/badge/Plaid-111111?style=flat-square&logoColor=white" />
-      <br/><sub>🔗 <a href="https://haven-money.vercel.app">haven-money.vercel.app</a></sub>
+      <img src="./assets/projects/portlkit.jpg" alt="Portlkit" width="100%" />
+      <h3>Portlkit</h3>
+      <p>White-label client portals for freelancers and small studios, built around getting paid. Each client gets one branded link with their progress, files, and an invoice they can pay on the spot.</p>
+      <p><sub>IN DEVELOPMENT</sub></p>
     </td>
     <td width="50%" valign="top">
-      <h3>🧾 Portlkit <sup><code>in progress</code></sup></h3>
-      <p>White-label client portals for freelancers and small studios, built around getting paid: invoice, milestones, and files behind one shareable link.</p>
-      <img src="https://img.shields.io/badge/Next.js-000000?style=flat-square&logo=nextdotjs&logoColor=white" />
-      <img src="https://img.shields.io/badge/Supabase-3FCF8E?style=flat-square&logo=supabase&logoColor=white" />
-      <img src="https://img.shields.io/badge/Stripe-635BFF?style=flat-square&logo=stripe&logoColor=white" />
-      <br/><sub>🚧 Launching soon</sub>
+      <a href="https://haven-money.vercel.app"><img src="./assets/projects/haven.jpg" alt="Haven" width="100%" /></a>
+      <h3>Haven</h3>
+      <p>A private finance tracker for a household. Plaid connects bank, card, and brokerage accounts; Supabase stores it; one dashboard shows net worth, spending, transactions, and holdings. Signups are locked to household members at the database level.</p>
+      <p><a href="https://haven-money.vercel.app">Live</a> &nbsp;·&nbsp; <sub>PRIVATE REPO</sub></p>
+    </td>
+  </tr>
+  <tr>
+    <td width="50%" valign="top">
+      <a href="https://github.com/Jasmanss/HairStyl"><img src="./assets/projects/hairstyl.jpg" alt="Hairstyl" width="100%" /></a>
+      <h3>Hairstyl</h3>
+      <p>An iOS grooming app that analyzes hair, beard, and eyebrows from a photo and builds a personal routine. I co-founded the company behind it and led the frontend. It reached 150+ active users in four months.</p>
+      <p><a href="https://github.com/Jasmanss/HairStyl">Code</a></p>
+    </td>
+    <td width="50%" valign="top">
+      <a href="https://jasmanss.github.io/AromaAI/"><img src="./assets/projects/aroma.jpg" alt="Aroma AI" width="100%" /></a>
+      <h3>Aroma AI</h3>
+      <p>A fragrance recommender that matches a scent from a photo or a short quiz, using Python and OpenCV. Won <b>Best UI/UX at GrizzHacks 7</b>.</p>
+      <p><a href="https://jasmanss.github.io/AromaAI/">Live</a> &nbsp;·&nbsp; <a href="https://github.com/Jasmanss/AromaAI">Code</a></p>
     </td>
   </tr>
 </table>
 
-### `~/stack`
+<br />
 
-<p align="center">
-  <a href="https://skillicons.dev">
-    <img src="https://skillicons.dev/icons?i=ts,js,python,swift,react,nextjs,tailwind,nodejs,fastapi,supabase,postgres,vercel,git,figma&perline=7" alt="Tech stack" />
-  </a>
-</p>
+## Experience
 
-### `~/stats`
+**Frontend Developer & Co-Founder** · Vengeance Intelligence LLC &nbsp;<sub>MAY 2025 – PRESENT</sub>
 
-<p align="center">
-  <img width="100%" src="https://github-profile-summary-cards.vercel.app/api/cards/profile-details?username=Jasmanss&theme=tokyonight" alt="Contribution overview" />
-</p>
+- Built the Hairstyl iOS app in Swift and SwiftUI, from photo capture through AI analysis to personalized routines.
+- Redesigned onboarding, capture, results, and tracking flows, cutting drop-off by 30%.
+- Grew to 150+ active users in four months through steady UI improvements and releases.
+- Worked with the backend developer on the AI pipeline to keep analysis around 2 seconds at 80%+ accuracy.
 
-<p align="center">
-  <img height="180" src="https://github-profile-summary-cards.vercel.app/api/cards/stats?username=Jasmanss&theme=tokyonight" alt="GitHub stats" />
-  <img height="180" src="https://streak-stats.demolab.com?user=Jasmanss&hide_border=true&background=1A1B27&ring=A78BFA&fire=F472B6&currStreakLabel=A78BFA&sideLabels=C9D1E4&currStreakNum=E6E9F2&sideNums=E6E9F2&dates=8B93A7" alt="GitHub streak" />
-</p>
+<br />
+
+## Toolkit
+
+| | |
+| :-- | :-- |
+| **Languages** | TypeScript, JavaScript, Python, Swift, SQL |
+| **Frameworks** | React, Next.js, SwiftUI, FastAPI, Tailwind CSS |
+| **Data & infra** | Supabase, Postgres, MongoDB, Vercel, Plaid, Stripe |
+| **AI** | Claude API, OpenAI API, OpenCV |
+
+<br />
 
 <picture>
   <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/Jasmanss/Jasmanss/output/snake-dark.svg" />
   <source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/Jasmanss/Jasmanss/output/snake.svg" />
-  <img alt="Snake eating my contributions" src="https://raw.githubusercontent.com/Jasmanss/Jasmanss/output/snake.svg" width="100%" />
+  <img alt="Contribution graph being eaten by a snake" src="https://raw.githubusercontent.com/Jasmanss/Jasmanss/output/snake.svg" width="100%" />
 </picture>
-
-<p align="center">
-  <sub>Built with too much coffee in Michigan ☕ · <a href="https://jasmanss.com">jasmanss.com</a></sub>
-</p>
