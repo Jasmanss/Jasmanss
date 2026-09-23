@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="84" viewBox="0 0 1200 84">
+<style>
+  .mono { font-family: ui-monospace, "SF Mono", SFMono-Regular, Menlo, Consolas, monospace; }
+  .sans { font-family: system-ui, -apple-system, "Helvetica Neue", Arial, sans-serif; }
+  .rule { transform-origin: 419.5px 0; animation: draw 1.2s cubic-bezier(.2,.7,.2,1) both .2s; }
+  @keyframes draw { from { transform: scaleX(0); } }
+</style>
+<rect x="0" y="22" width="84" height="42" fill="#C8FF2E"/>
+<text x="42" y="50" text-anchor="middle" class="mono" font-size="17" letter-spacing="2" fill="#0A0B0C">01</text>
+<text x="112" y="56" class="sans" font-size="36" font-weight="800" letter-spacing="-.8" fill="#0A0B0C">SELECTED WORK</text>
+<line class="rule" x1="420" y1="43.5" x2="828" y2="43.5" stroke="#D0D4D8" stroke-width="1"/>
+<text x="1200" y="48" text-anchor="end" class="mono" font-size="12" letter-spacing="2" fill="#6A6F75">SIX PROJECTS, ALL SHIPPED OR SHIPPING</text>
+</svg>

@@ -4,11 +4,18 @@ I'm a computer science student at Oakland University who builds software people 
 
 Currently building **Portlkit**, client portals that help freelancers get paid.
 
-[jasmanss.com](https://jasmanss.com) &nbsp;·&nbsp; [LinkedIn](https://www.linkedin.com/in/jasmanss/) &nbsp;·&nbsp; [jasmansidhu974@gmail.com](mailto:jasmansidhu974@gmail.com)
+<p>
+  <a href="https://jasmanss.com"><img src="https://img.shields.io/badge/jasmanss.com-C8FF2E?style=for-the-badge&logo=googlechrome&logoColor=0A0B0C" alt="Website" /></a>
+  <a href="https://www.linkedin.com/in/jasmanss/"><img src="https://img.shields.io/badge/LinkedIn-0A0B0C?style=for-the-badge&logo=linkedin&logoColor=C8FF2E" alt="LinkedIn" /></a>
+  <a href="mailto:jasmansidhu974@gmail.com"><img src="https://img.shields.io/badge/Email-0A0B0C?style=for-the-badge&logo=gmail&logoColor=C8FF2E" alt="Email" /></a>
+</p>
 
 <br />
 
-## Selected work
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="./assets/sections/work-dark.svg" />
+  <img src="./assets/sections/work-light.svg" alt="Selected work" width="100%" />
+</picture>
 
 <table>
   <tr>
@@ -57,7 +64,10 @@ Currently building **Portlkit**, client portals that help freelancers get paid.
 
 <br />
 
-## Experience
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="./assets/sections/experience-dark.svg" />
+  <img src="./assets/sections/experience-light.svg" alt="Experience" width="100%" />
+</picture>
 
 **Frontend Developer & Co-Founder** · Vengeance Intelligence LLC &nbsp;<sub>MAY 2025 – PRESENT</sub>
 
@@ -68,16 +78,21 @@ Currently building **Portlkit**, client portals that help freelancers get paid.
 
 <br />
 
-## Toolkit
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="./assets/sections/stack-dark.svg" />
+  <img src="./assets/sections/stack-light.svg" alt="Stack" width="100%" />
+</picture>
 
-| | |
-| :-- | :-- |
-| **Languages** | TypeScript, JavaScript, Python, Swift, SQL |
-| **Frameworks** | React, Next.js, SwiftUI, FastAPI, Tailwind CSS |
-| **Data & infra** | Supabase, Postgres, MongoDB, Vercel, Plaid, Stripe |
-| **AI** | Claude API, OpenAI API, OpenCV |
+<img src="./assets/stack.svg" alt="TypeScript, JavaScript, Python, Swift, React, Next.js, Node.js, FastAPI, Tailwind, Supabase, Postgres, MongoDB, Vercel, Stripe, GitHub Actions, Claude, OpenAI, OpenCV, Git, Figma" width="100%" />
 
-<br />
+<br /><br />
+
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="./assets/sections/activity-dark.svg" />
+  <img src="./assets/sections/activity-light.svg" alt="Activity" width="100%" />
+</picture>
+
+<img src="./assets/stats.svg" alt="GitHub activity: contributions, streaks, languages, and weekly commits" width="100%" />
 
 <picture>
   <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/Jasmanss/Jasmanss/output/snake-dark.svg" />
