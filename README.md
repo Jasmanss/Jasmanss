@@ -78,12 +78,12 @@ const jasman = {
 ### `~/stats`
 
 <p align="center">
-  <img height="165" src="https://github-readme-stats.vercel.app/api?username=Jasmanss&show_icons=true&hide_border=true&bg_color=0d1020&title_color=a78bfa&icon_color=7dd3fc&text_color=c9d1e4&include_all_commits=true&count_private=true" alt="GitHub stats" />
-  <img height="165" src="https://streak-stats.demolab.com?user=Jasmanss&hide_border=true&background=0d1020&ring=A78BFA&fire=F472B6&currStreakLabel=A78BFA&sideLabels=C9D1E4&currStreakNum=E6E9F2&sideNums=E6E9F2&dates=8B93A7" alt="GitHub streak" />
+  <img width="100%" src="https://github-profile-summary-cards.vercel.app/api/cards/profile-details?username=Jasmanss&theme=tokyonight" alt="Contribution overview" />
 </p>
 
 <p align="center">
-  <img width="100%" src="https://github-readme-activity-graph.vercel.app/graph?username=Jasmanss&bg_color=0d1020&color=c9d1e4&line=a78bfa&point=f472b6&area=true&area_color=a78bfa&hide_border=true&custom_title=Contribution%20activity" alt="Activity graph" />
+  <img height="180" src="https://github-profile-summary-cards.vercel.app/api/cards/stats?username=Jasmanss&theme=tokyonight" alt="GitHub stats" />
+  <img height="180" src="https://streak-stats.demolab.com?user=Jasmanss&hide_border=true&background=1A1B27&ring=A78BFA&fire=F472B6&currStreakLabel=A78BFA&sideLabels=C9D1E4&currStreakNum=E6E9F2&sideNums=E6E9F2&dates=8B93A7" alt="GitHub streak" />
 </p>
 
 <picture>
